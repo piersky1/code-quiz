@@ -2,31 +2,31 @@ var questions = [
     {
         title: "Question #1?",
         choices: ["A", "B", "C", "D"],
-        answer: "X"
+        answer: "B"
     },
 
     {
         title: "Question #2?",
         choices: ["A", "B", "C", "D"],
-        answer: "X"
+        answer: "D"
     },
 
     {
         title: "Question #3?",
         choices: ["A", "B", "C", "D"],
-        answer: "X"
+        answer: "A"
     },
 
     {
         title: "Question #4?",
         choices: ["A", "B", "C", "D"],
-        answer: "X"
+        answer: "C"
     },
 
     {
         title: "Question #5?",
         choices: ["A", "B", "C", "D"],
-        answer: "X"
+        answer: "B"
     },
 
 ];

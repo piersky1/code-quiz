@@ -7,27 +7,55 @@
     <title>Coding Quiz</title>
 
     <link rel="stylesheet" href="./assets/css/styles.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
 
   <body>
-    <div class="scores"><a href="highscores.html">View Highscores</a></div>
 
-    <div class="timer">Time: <span id="time">0</span></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+      <a class="navbar-brand" href="index.html">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="highscores.html">View Highscores</a>
+          </li>
+        </ul>
+        <div class="navbar-text">
+          Time: <span id="time">0</span>
+        </div>
+      </div>
+    </nav>
 
-    <div class="wrapper">
-      <div id="start-screen" class="start">
-        <h1>Coding Quiz Challenge</h1>
-        <p>
-          Try to answer the following code-related questions within the time
-          limit. Keep in mind that incorrect answers will penalize your
-          score/time by ten seconds!
+      <div id="start-screen" class="jumbotron">
+        <h1 class="display-4">Coding Quiz Challenge</h1>
+        <p class="lead">Try to answer the following code-related questions within the 180 second time
+          limit.</p>
+        <hr class="my-4">
+        <p>Keep in mind that incorrect answers will penalize your
+          time by 10 seconds!</p>
+        <p class="lead">
+          <button id="start" class="btn btn-primary btn-lg" role="button" onclick="startTimer()">Start Quiz</button>
         </p>
-        <button id="start" onclick="startTimer()">Start Quiz</button>
       </div>
 
-      <div id="questions" class="hidden">
-        <h2 id="question-title"></h2>
-        <div id="choices" class="choices"></div>
+      <!-- Q&A -->
+      <div id="quiz" class="hidden">
+            <div id="QA-block">
+                <h3 id="questions">Question</h3>
+                <ul id="answers" class="list-unstyled">
+                    <li class="answerChoice">A) </li>
+                    <li class="answerChoice">B) </li>
+                    <li class="answerChoice">C) </li>
+                    <li class="answerChoice">D) </li>
+                </ul>
+                <p class="feedback"></p>
+            </div>
+        </div>
       </div>
 
       <div id="end-screen" class="hidden">
@@ -42,6 +70,9 @@
       <div id="feedback" class="feedback hidden"></div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="./assets/js/questions.js"></script>
     <script src="./assets/js/logic.js"></script>
   </body>
