@@ -51,6 +51,8 @@ table {
 
 /* End reset CSS */ 
 
+/* For hiding elements as needed */ 
+
 .hidden {
   display: none;
 }

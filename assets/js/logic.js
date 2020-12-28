@@ -1,3 +1,21 @@
+// For questions and choices
+var questionHead = document.getElementById("questions");
+var answerChoices = document.getElementById("answers");
+// For some reason it keeps skipping the first question, so I set this variable to -2 so that the index starts at 0 (see buildQuiz function below)
+var questionNumber = -2;
+var answer;
+// Empty variable for storing count of correct answers
+var points = 0;
+// Text input for high scoreboard
+var finalScoreElement = document.getElementById("final-score");
+var userInitials;
+var submitScoreElement = document.querySelector("#end-screen");
+var startBtn = document.getElementById("startBtn");
+var submitBtn = document.querySelector("button.submitBtn")
+// For countdown timer
+var timeElmt = document.getElementById("time")
+var secondsLeft = 150;
+
 function startTimer() {
  
   document.getElementById("start-screen").classList.add('hidden');
@@ -10,11 +28,6 @@ function startTimer() {
   buildQuiz();
 }
 
-// Start timer countdown
-var timeElmt = document.getElementById("time")
-
-var secondsLeft = 150;
-
 function setTimer() {
   var countdown = setInterval(function() {
     secondsLeft--;
@@ -26,11 +39,6 @@ function setTimer() {
   }
 }, 1000);
 }
-
-var questionHead = document.getElementById("questions");
-var answerChoices = document.getElementById("answers");
-var questionNumber = -1;
-var answer;
 
 // Function for displaying quiz questions and choices
 function buildQuiz() {
@@ -61,9 +69,6 @@ function showFeedback(){
   pElement.removeAttribute('style');
 }
 
-// Variable for storing count of correct answers
-var score = 0;
-
 answerChoices.addEventListener("click", function (event) {
   var pElement = document.getElementsByClassName("feedback")[0]
   
@@ -75,7 +80,7 @@ answerChoices.addEventListener("click", function (event) {
     </div>`;
       setTimeout(hideFeedback,1000);
       showFeedback();
-      score++;   
+      points++;   
       
   } else {
       pElement.innerHTML = `<div class="alert alert-danger" role="alert">
@@ -88,11 +93,36 @@ answerChoices.addEventListener("click", function (event) {
   buildQuiz();
 });
 
-// display option to enter name to scoreboard
-var finalScoreElement = document.getElementById("final-score");
-
+// Display final score
 function displayScore() {
   document.getElementById("quiz").classList.add('hidden');
   document.getElementById("end-screen").classList.remove('hidden');
-  finalScoreElement.textContent = score + " out of 5";
+  finalScoreElement.textContent = points;
+}
+
+// Event listeners for buttons
+startBtn.addEventListener("click", startTimer);
+submitBtn.addEventListener("click", function (event) {
+  event.stopPropagation();
+  addScore();
+  
+  window.location.href = './highscores.html'
+});
+
+// Store quiz scores locally
+function addScore () {
+  userInitials = document.getElementById("initials").value
+  
+  // create a new object with name and score keys
+var newScore = {
+      name: userInitials,
+      score: points
+  };
+  // check if there are scores in local storage first and take value
+  //if not, make a blank array
+  var highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
+  // push object into score array
+  highScores.push(newScore)
+  // turn objects into an array of strings + put it into local storage
+  localStorage.setItem("highScores", JSON.stringify(highScores));
 }

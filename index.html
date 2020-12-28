@@ -31,6 +31,7 @@
       </div>
     </nav>
 
+      <!-- Home screen -->
       <div id="start-screen" class="jumbotron">
         <h1 class="display-4">Coding Quiz Challenge</h1>
         <p class="lead">Try to answer the following code-related questions within the 150 second time
@@ -39,11 +40,11 @@
         <p>There are five questions total. Incorrect answers will penalize your
           time by <strong>30 seconds!</strong></p>
         <p class="lead">
-          <button id="start" class="btn btn-primary btn-lg" role="button" onclick="startTimer()">Start Quiz</button>
+          <button id="startBtn" class="btn btn-primary btn-lg" role="button" onclick="startTimer()">Start Quiz</button>
         </p>
       </div>
 
-      <!-- Q&A -->
+      <!-- Q&A screen -->
       <div id="quiz" class="hidden">
             <div id="QA-block">
                 <h3 id="questions">Question</h3>
@@ -58,14 +59,15 @@
         </div>
       </div>
 
+      <!-- End screen -->
       <div id="end-screen" class="jumbotron hidden">
         <h1 class="display-4">All done!</h1>
-        <p class="lead">Your final score is <span id="final-score"></span>.</p>
+        <p class="lead">Your final score is <span id="final-score"></span> out of 5.</p>
         <hr class="my-4">
           <div class="input-group mb-3">
-            <input type="text" id="initials" class="form-control" max="3" placeholder="Enter initials (max 3 characters)" aria-label="Initials" aria-describedby="basic-addon2">
+            <input type="text" id="initials" class="form-control" max="3" placeholder="Enter initials (max 3 characters)" aria-label="User initials" aria-describedby="basic-addon2">
             <div class="input-group-append">
-              <button id="submit" class="btn btn-outline-secondary" type="button">Submit</button>
+              <button id="submit" class="btn btn-outline-secondary submitBtn" type="button">Submit</button>
             </div>
           </div>
       </div>
